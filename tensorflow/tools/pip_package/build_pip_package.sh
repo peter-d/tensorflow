@@ -136,7 +136,10 @@ function main() {
   pushd ${TMPDIR}
   rm -f MANIFEST
   echo $(date) : "=== Building wheel"
+set -x
+  which python
   "${PYTHON_BIN_PATH:-python}" setup.py bdist_wheel ${GPU_FLAG} >/dev/null
+set +x
   mkdir -p ${DEST}
   cp dist/* ${DEST}
   popd

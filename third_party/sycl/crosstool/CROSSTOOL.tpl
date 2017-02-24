@@ -36,7 +36,6 @@ toolchain {
   cxx_flag: "-std=c++11"
   linker_flag: "-Wl,-no-as-needed"
   linker_flag: "-lstdc++"
-  linker_flag: "-B/usr/bin/"
 
   # TODO(bazel-team): In theory, the path here ought to exactly match the path
   # used by gcc. That works because bazel currently doesn't track files at

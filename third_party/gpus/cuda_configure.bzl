@@ -117,6 +117,7 @@ def _enable_cuda(repository_ctx):
   if "TF_NEED_CUDA" in repository_ctx.os.environ:
     enable_cuda = repository_ctx.os.environ["TF_NEED_CUDA"].strip()
     return enable_cuda == "1"
+  fail("CUDA??")
   return False
 
 
