@@ -44,7 +44,7 @@ toolchain {
 
   tool_path { name: "ar" path: "/usr/bin/ar" }
   tool_path { name: "compat-ld" path: "/usr/bin/ld" }
-  tool_path { name: "cpp" path: "/usr/bin/cpp" }
+  tool_path { name: "cpp" path: "/imec/software/gcc/4.9.2/bin/cpp" }
   tool_path { name: "dwp" path: "/usr/bin/dwp" }
   # As part of the TensorFlow release, we place some cuda-related compilation
   # files in @local_config_cuda//crosstool/clang/bin, and this relative
@@ -57,10 +57,15 @@ toolchain {
   linker_flag: "-Wl,-no-as-needed"
   linker_flag: "-lstdc++"
   linker_flag: "-L/apps/all/GCCcore/4.9.3/lib64"
+  linker_flag: "-L/imec/software/gcc/4.9.2/lib64"
   linker_flag: "-lstdc++"
   linker_flag: "-Wl,-rpath,/apps/all/GCCcore/4.9.3/lib64"
+  linker_flag: "-Wl,-rpath,/imec/software/gcc/4.9.2/lib64"
   linker_flag: "-lrt"
   linker_flag: "-lm"
+  cxx_builtin_include_directory: "/imec/software/gcc/4.9.2/LINUX6/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/include"
+  cxx_builtin_include_directory: "/imec/software/gcc/4.9.2/LINUX6/lib/gcc/x86_64-unknown-linux-gnu/4.9.2/include-fixed"
+  cxx_builtin_include_directory: "/imec/software/gcc/4.9.2/LINUX6/include/c++/4.9.2"
 
 %{gcc_host_compiler_includes}
   tool_path { name: "gcov" path: "/usr/bin/gcov" }
