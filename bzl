@@ -13,6 +13,7 @@ setenv TF_CUDA_COMPUTE_CAPABILITIES 5.2,3.7,5.0
 setenv CUDA_PATH $CUDA_TOOLKIT_PATH
 setenv CUDA_COMPUTE_CAPABILITIES $TF_CUDA_COMPUTE_CAPABILITIES
 
+# NB it seems this is not passed to bazel properly! need to add this by hand?
 setenv EXTRA_BAZEL_ARGS "--jobs 8 -config=opt --copt=-DGPR_BACKWARDS_COMPATIBILITY_MODE --verbose_failures --genrule_strategy=standalone --spawn_strategy=standalone --copt=-mavx --copt=-mavx2 --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2"
 
 bazel --output_base=/scratch/`whoami` $*

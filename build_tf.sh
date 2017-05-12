@@ -14,7 +14,9 @@ source ~soceval/public/python3.csh
 
 # NB this will also download a bunch of dependencies, some of which might not build without adding a few compiler/linker flags
 # This will populte bazel-tensorflow where we will need to edit a few things...
-./bzl build --config=cuda //tensorflow/tools/pip_package:build_pip_package 
+./bzl build -s -c opt --copt=-mavx --copt=-mfma --copt=-mfpmath=both --copt=-msse4.2 --config=cuda -k //tensorflow/tools/pip_package:build_pip_package 
+# Note we should be able to also add --copt=-mavx2 (the cpu supports it) but then the assembler craps out because it does not know avx2 instructions
+
 # Build tf to see how far we get
 
 # This will fail with linking on protobufs fixes needed:
